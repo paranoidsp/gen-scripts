@@ -1,2 +1,6 @@
 #!/bin/bash
-gvim --servername stable --remote-tab ~/scratch
+if [[ -n "$1" ]]; then
+    gvim --servername stable --remote-tab $1
+else
+    gvim --servername stable --remote-tab ~/git/lit/journal/`date -Idate`
+fi
