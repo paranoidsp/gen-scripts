@@ -7,7 +7,7 @@ monitor() {
   local pid=$1 i=0
 
   while ps $pid &>/dev/null; do
-    if (( i++ > 5 )); then
+    if (( i++ > 8 )); then
       echo "Max checks reached. Sending SIGKILL to ${pid}..." >&2
       kill -9 $pid; return 1
     fi

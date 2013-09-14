@@ -1,3 +1,4 @@
+getawrongans
 while [ "$?" -gt "0" ] ; do
     sleep 1 # delay in seconds between retries
     ssh -L 1234:10.93.0.37:3333 saarangadmin@10.93.185.167

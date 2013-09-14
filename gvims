@@ -1,6 +1,9 @@
 #!/bin/bash
 if [[ -n "$1" ]]; then
-    gvim --servername stable --remote-tab $1
+    gvim --servername stable --remote-silent $1
 else
-    gvim --servername stable --remote-tab ~/git/lit/journal/`date -Idate`
+    journal=~/git/lit/journal/`date -Idate`.journal
+    gvim --servername stable --remote-silent $journal
 fi
+
+
