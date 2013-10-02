@@ -1,5 +1,11 @@
 #!/bin/bash
 if [[ -n "$1" ]]; then
+    if [[ $1 -eq "tapti" ]] ; then
+        gvim -S ~paranoidsp/.vim/tapti
+    fi
+    if [[ $1 -eq "php" ]] ; then
+        gvim -S ~paranoidsp/.vim/tapti
+    fi
     gvim --servername stable --remote-silent $1
 else
     journal=~/git/lit/journal/`date -Idate`.journal

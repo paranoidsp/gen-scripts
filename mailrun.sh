@@ -31,6 +31,7 @@ echo "+++++++++++++++++++++++++++++++" >>~/.offlineimap/stat
 for i in ~/.offlineimap/Account-viswanathkarthikeya/LocalStatus-sqlite/* ; do  echo $i, " ----" ; sqlite3 $i "pragma integrity_check;" >> ~/.offlineimap/stat ; done
 echo "+++++++++++++++++++++++++++++++" >>~/.offlineimap/stat
 offlineimap -o 2&>>~/.offlineimap/stat & monitor $!
+
 echo "+++++++++++++++++++++++++++++++" >>~/.offlineimap/stat
 echo `date`, "     Ran" >>~/.offlineimap/stat
 echo "==================================================================================================================" >>~/.offlineimap/stat
