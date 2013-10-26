@@ -1,1 +1,1 @@
-xterm -e w3m -no-proxy www.google.com
+w3m -no-proxy www.google.com
