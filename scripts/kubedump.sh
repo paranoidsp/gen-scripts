@@ -10,7 +10,8 @@ if [[ -z ${CONTEXT} ]]; then
 fi
 
 NAMESPACES=$(kubectl --context ${CONTEXT} get -o json namespaces|jq '.items[].metadata.name'|sed "s/\"//g")
-RESOURCES="configmap secret daemonset deployment service hpa"
+NAMESPACES="default hasura"
+RESOURCES="configmap secret daemonset deployment service"
 
 for ns in ${NAMESPACES};do
   echo "-- Dumping $ns"
@@ -25,7 +26,7 @@ for ns in ${NAMESPACES};do
         echo "Empty resource"
     else
         for r in ${rsrcs};do
-            dir="${CONTEXT}/${ns}/${resource}"
+            dir="$HOME/backup/kubedump/${CONTEXT}/${ns}/${resource}"
             mkdir -p "${dir}"
             kubectl --context ${CONTEXT} -n ${ns} get -o yaml ${resource} ${r} > "${dir}/${r}.yaml"
         done

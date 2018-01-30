@@ -1,0 +1,8 @@
+#!/bin/bash
+
+IMAGE=/tmp/i3lock.png
+
+scrot $IMAGE
+convert -scale 10% -scale 1000% $IMAGE $IMAGE
+i3lock -efi $IMAGE
+rm $IMAGE
