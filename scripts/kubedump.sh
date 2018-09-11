@@ -25,11 +25,13 @@ for ns in ${NAMESPACES};do
     then
         echo "Empty resource"
     else
+      if [[ "$rsrcs" != "" ]]; then
         for r in ${rsrcs};do
             dir="$HOME/backup/kubedump/${CONTEXT}/${ns}/${resource}"
             mkdir -p "${dir}"
             kubectl --context ${CONTEXT} -n ${ns} get -o yaml ${resource} ${r} > "${dir}/${r}.yaml"
         done
+      fi
     fi
   done
 done

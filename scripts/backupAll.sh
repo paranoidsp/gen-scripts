@@ -2,11 +2,16 @@
 
 # This script rsync's most of home into corresponding folders in svalbard
 
-rsync --partial --progress --append --rsh=ssh -r -h ~/Music ~/babel
-rsync --partial --progress --append --rsh=ssh -r -h ~/Videos ~/babel
-rsync --partial --progress --append --rsh=ssh -r -h ~/Downloads ~/babel
-rsync --partial --progress --append --rsh=ssh -r -h ~/Pictures ~/babel
+rcl() {
+  rclone -L --stats 5s --stats-log-level NOTICE $@
+}
 
-rsync --partial --progress --append --rsh=ssh -r -h ~/git ~/arch
-rsync --partial --progress --append --rsh=ssh -r -h ~/work ~/arch
+rcl copy ~/Music ~/svalbard/Music
+rcl copy ~/Videos ~/svalbard/Videos
+rcl copy ~/Downloads ~/svalbard/Downloads
+rcl copy ~/Pictures ~/svalbard/Pictures
+rcl copy ~/Documents ~/svalbard/Documents
+rcl copy ~/work ~/linux/work
+rcl copy ~/git ~/linux/git
+rcl copy ~/temp ~/linux/temp
 echo "Finished backing up"

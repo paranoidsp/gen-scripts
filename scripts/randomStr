@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [[ -z $1 ]]; then
+  i=8
+fi
+
+head -c $((i*2)) /dev/urandom | base64 | base64 | head -c $i
