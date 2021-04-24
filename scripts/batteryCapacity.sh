@@ -9,5 +9,5 @@ function batCapacity()   {
 
   echo "scale=2;($bat0 + $bat1)/($bat0_full + $bat1_full)" | bc -l
 }
-echo -n "$(date +"%Y-%m-%dT%H:%M:%S")"
+echo -n "$(date +"%Y-%m-%dT%H:%M:%S")   "
 batCapacity
