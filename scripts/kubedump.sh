@@ -6,12 +6,13 @@ CONTEXT="$1"
 
 if [[ -z ${CONTEXT} ]]; then
   echo "Usage: $0 KUBE-CONTEXT"
-  exit 1
+  echo "Running on default context..."
+  CONTEXT=$(kubectl config current-context)
 fi
 
 NAMESPACES=$(kubectl --context ${CONTEXT} get -o json namespaces|jq '.items[].metadata.name'|sed "s/\"//g")
-NAMESPACES="default hasura"
-RESOURCES="configmap secret daemonset deployment service"
+NAMESPACES="$(kubectl get ns -o json | jq -r '.items[].metadata.name')"
+RESOURCES="configmap secret daemonset deployment service ingress"
 
 for ns in ${NAMESPACES};do
   echo "-- Dumping $ns"
